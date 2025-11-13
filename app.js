@@ -16,7 +16,7 @@ app.use(_cors);
 //... ruta raíz ...
 app.get("/", (req, res) => {
     res.json({
-        mensaje: "API Backend - Proyecto Final - Felipe Palomino Sotelo",
+        mensaje: "API Backend - Proyecto Final - Felipe Palomino Sotelo PERU",
         version: "1.0",
         endpoints: "/api/v1"
     });
