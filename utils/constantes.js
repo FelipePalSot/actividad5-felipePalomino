@@ -1,5 +1,6 @@
 const PUERTO=4001;
-export const FRONTEND_URL='http://localhost:3001';
+
+export const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3001';
 
 //export const JWT_SECRET='PUCPBackend2025';
 //export const JWT_SECRET='f67654cfd723b3990b173ed651b21703cd11b710b8cc843effd665eeacb19a21'
