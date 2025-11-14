@@ -1,12 +1,15 @@
 import _express from "express";
 import _bodyParser from "body-parser";
 import _cors from "./config/cors.js";
+import helmet from "helmet";
 
 import PUERTO from "./utils/constantes.js";
 import api from "./routes.js"
 import { configSocket } from "./utils/socket.js";
 
 const app= _express();
+app.use(helmet());
+
 app.use(_bodyParser.json());
 app.use(_bodyParser.urlencoded({ extended: true, 
     type: 'application/x-www-form-urlencoded' }));
