@@ -5,182 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API - Felipe Palomino</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
+            font-family: Arial, sans-serif;
             max-width: 800px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 50px auto;
+            padding: 20px;
         }
         h1 {
-            color: #333;
             margin-bottom: 10px;
-            font-size: 2.5em;
         }
-        .subtitle {
+        p {
             color: #666;
             margin-bottom: 30px;
-            font-size: 1.1em;
         }
-        .endpoint {
-            background: #f7f9fc;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-        .endpoint:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .endpoint-title {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-        .endpoint-url {
-            color: #555;
-            font-family: 'Courier New', monospace;
-            background: white;
-            padding: 8px 12px;
-            border-radius: 5px;
+        a {
             display: inline-block;
-            margin: 10px 0;
-        }
-        .endpoint-desc {
-            color: #777;
-            font-size: 0.9em;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
             padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: #5568d3;
-        }
-        .products-container {
-            margin-top: 30px;
-            display: none;
-        }
-        .products-container.show {
-            display: block;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .product-card {
-            background: #f7f9fc;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e1e8ed;
-        }
-        .product-name {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        .product-price {
-            color: #667eea;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .product-stock {
-            color: #666;
-            font-size: 0.9em;
-        }
-        .loading {
-            text-align: center;
-            color: #667eea;
-            padding: 20px;
-        }
-        .badge {
-            background: #667eea;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            display: inline-block;
-            margin-top: 5px;
+            color: blue;
+            text-decoration: underline;
+            margin: 10px 5px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 API Backend</h1>
-        <p class="subtitle">Proyecto Final - Felipe Palomino Sotelo PERU</p>
-        
-        <div class="endpoint">
-            <div class="endpoint-title">📦 Catálogo de Productos</div>
-            <div class="endpoint-url">/api/v1/catalogo</div>
-            <p class="endpoint-desc">Obtiene todos los productos disponibles (10 productos)</p>
-            <button class="btn" onclick="loadProducts()">Ver Productos</button>
-            <a class="btn" href="/api/v1/catalogo" target="_blank">Abrir JSON</a>
-        </div>
-
-        <div class="endpoint">
-            <div class="endpoint-title">🔐 Seguridad</div>
-            <div class="endpoint-url">/api/v1/seguridad</div>
-            <p class="endpoint-desc">Endpoints de autenticación y autorización</p>
-        </div>
-
-        <div class="products-container" id="productsContainer">
-            <h2>Productos Disponibles</h2>
-            <div id="productsGrid" class="product-grid"></div>
-        </div>
-    </div>
-
-    <script>
-        async function loadProducts() {
-            const container = document.getElementById('productsContainer');
-            const grid = document.getElementById('productsGrid');
-            
-            container.classList.add('show');
-            grid.innerHTML = '<div class="loading">Cargando productos...</div>';
-            
-            try {
-                const response = await fetch('/api/v1/catalogo');
-                const products = await response.json();
-                
-                grid.innerHTML = products.map(product => `
-                    <div class="product-card">
-                        <div class="product-name">${product.nombre}</div>
-                        <div class="product-price">S/ ${product.precio.toFixed(2)}</div>
-                        <div class="product-stock">Stock: ${product.stock}</div>
-                        <span class="badge">${product.categoria.nombre}</span>
-                    </div>
-                `).join('');
-            } catch (error) {
-                grid.innerHTML = '<div class="loading" style="color: red;">Error al cargar productos</div>';
-            }
-        }
-    </script>
+    <h1>API Backend</h1>
+    <p>Proyecto Final - Felipe Palomino Sotelo PERU</p>
+    
+    <h2>Catalogo de Productos</h2>
+    <a href="/api/v1/catalogo" target="_blank">Ver JSON del Catalogo</a>
 </body>
 </html>
