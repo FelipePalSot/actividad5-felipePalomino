@@ -12,13 +12,21 @@ app.use(_bodyParser.urlencoded({ extended: true,
     type: 'application/x-www-form-urlencoded' }));
 app.use(_cors);
 
+// Servir archivos estáticos (opcional - para la página de bienvenida)
+app.use(_express.static('public'));
+
 
 //... ruta raíz ...
 app.get("/", (req, res) => {
     res.json({
         mensaje: "API Backend - Proyecto Final - Felipe Palomino Sotelo PERU",
         version: "1.0",
-        endpoints: "/api/v1"
+        endpoints: {
+            "raiz": "/api/v1",
+            "catalogo": "/api/v1/catalogo",
+            "seguridad": "/api/v1/seguridad"
+        },
+        info: "Para ver los productos, visita: /api/v1/catalogo"
     });
 });
 
